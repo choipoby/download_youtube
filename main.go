@@ -5,12 +5,12 @@ import (
 	"net/url"
 	"os"
 
-	. "github.com/KeluDiao/gotube/api"
+	. "./api"
 )
 
 const VIDEO_EXTENSION = ".mp4"
 const VIDEO_TYPE = "video/mp4"
-const VIDEO_QUALITY = "medium"
+const VIDEO_QUALITY = "highres"
 
 func main() {
 
@@ -59,12 +59,14 @@ func DownloadYoutubeVideo(u string, outpath string, nickname string) (string, er
 	}
 	return videoFileName, nil
 }
+
 func downloadYoutubeVideo(videoID, filename, outpath, quality, videoType string) error {
 	vl, err := GetVideoListFromId(videoID)
 	if err != nil {
 		return err
 	}
-	err = vl.Download(outpath, filename, quality, videoType)
+
+	err = vl.Download(outpath, filename, "", videoType)
 	return err
 }
 func getYoutubeVideoIDFromURL(u string) (string, error) {

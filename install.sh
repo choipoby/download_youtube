@@ -1,1 +1,1 @@
-go get github.com/KeluDiao/gotube/api
+go get github.com/choipoby/gotube/api
